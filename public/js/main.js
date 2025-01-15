@@ -35,8 +35,8 @@ class Patient {
 
 // Création des patients
 let patients = [
-    new Patient("Marcus", "mal indenté", 100, "vide", "malade"),
-    new Patient("Optimus", "unsave", 200, "vide", "malade"),
+    new patient("Marcus", "mal indenté", 100, "vide", "malade"),
+    new patient("Optimus", "unsave", 200, "vide", "malade"),
     new Patient("Sangoku", "404", 80, "vide", "malade"),
     new Patient("DarthVader", "azmatique", 110, "vide", "malade"),
     new Patient("Semicolon", "syntaxError", 60, "vide", "malade")
@@ -153,3 +153,56 @@ afficherDiagnostics();
 // Tarif des traitements
  
 // Voici les objets traitement (médicaments) que les patients peuvent acheter a la pharmacie
+
+// Définition du tableau des traitements
+let traitements = [
+    { nom: 'ctrl+maj+f', prix: 60 },
+    { nom: 'saveOnFocusChange', prix: 100 },
+    { nom: 'CheckLinkRelation', prix: 35 },
+    { nom: 'Ventoline', prix: 40 },
+    { nom: 'f12+doc', prix: 20 }
+];
+
+// Fonction pour afficher les traitements et leurs prix
+function afficherTraitements(traitements) {
+    console.log('| Traitement           | Prix  |');
+    console.log('| -------------------- | ----- |');
+    traitements.forEach(traitement => {
+        console.log(`| \`${traitement.nom}\`         | ${traitement.prix}€   |`);
+    });
+}
+
+// Appel de la fonction pour afficher les traitements
+afficherTraitements(traitements);
+
+
+//Le cimetière
+ 
+
+// Les patients qui a après être passés a la pharmacie n'ont pas pu se procurer leur remède, meurt et sont envoyés au cimetière.
+// (un message triste du type annonces nécrologique, indique les détails du décès)
+
+// Création de la classe Cimetiere
+class Cimetiere {
+    constructor() {
+        this.patients = [];
+    }
+
+    enterrer(patient) {
+        console.log(`Annonce nécrologique: ${patient.nom} est décédé.`);
+        this.patients.push(patient);
+    }
+}
+
+// Exemple d'utilisation
+let cimetiere = new Cimetiere();
+cimetiere.enterrer(patient);
+
+
+
+
+
+
+
+
+
