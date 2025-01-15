@@ -115,11 +115,41 @@ class Docteur {
 }
 
 // Exemple d'utilisation
-const docteur = new Docteur();
+let docteur = new Docteur();
 docteur.miauler();
 
-const patient1 = new Patient("Alice");
+let patient1 = new Patient("Alice");
 docteur.recevoirPatient(patient1);
 
-const patient2 = new Patient("Bob");
-docteur.recevoirPatient(patient2); // Bob doit attendre
+let patient2 = new Patient("Bob");
+docteur.recevoirPatient(patient2); 
+
+//Grille des diagnostics 
+
+let diagnostics = [
+    { maladie: "mal indenté", traitement: "ctrl+maj+f" },
+    { maladie: "unsave", traitement: "saveOnFocusChange" },
+    { maladie: "404", traitement: "CheckLinkRelation" },
+    { maladie: "azmatique", traitement: "Ventoline" },
+    { maladie: "syntaxError", traitement: "f12+doc" }
+];
+
+// Fonction pour afficher la grille des diagnostics
+function afficherDiagnostics() {
+    console.table(diagnostics);
+}
+
+// Appel de la fonction pour afficher les diagnostics
+afficherDiagnostics();
+
+
+// La pharmacie 
+ 
+// La pharmacie dispose de traitement. 
+// Après le médecin, les patients se rendront à la pharmacie et recevront leur traitement s'ils ont assez d'argent.
+// A leur arrivé a la pharmacie, un message de bienvenu a la pharmacie s'affiche dans la console.
+// S'ils n'ont pas assez d'argent, ils seront considérés comme morts et devront être envoyé dans un cimetière.
+
+// Tarif des traitements
+ 
+// Voici les objets traitement (médicaments) que les patients peuvent acheter a la pharmacie
