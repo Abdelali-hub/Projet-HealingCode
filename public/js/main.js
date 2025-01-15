@@ -50,3 +50,76 @@ patients.forEach(patient => {
 });
 
 
+// Description du docteur
+ 
+// Le docteur reçoit les patients dans son cabinet.
+// Il les diagnostique, se fait payer, puis prescrit un traitement.
+// Attention, le docteur fait sortir le patient de son cabinet avant de prendre le suivant.
+// Dans son cabinet, il y a son chat de race sphynx pour maintenir un environnement stérile.
+// Son chat miaule toutes les deux secondes dans la console (bonus).
+// La consultation coûte 50€. Les patients sont dans un état de traitement avant de sortir du cabinet.
+
+class patient {
+    constructor(nom) {
+        this.nom = nom;
+        this.argent = 50; 
+        this.diagnostique = null;
+    }
+}
+
+class Docteur {
+    constructor() {
+        this.argent = 0;
+        this.cabinet = "chat"; 
+        this.patients = [];
+    }
+
+    recevoirPatient(patient) {
+        if (this.patients.length < 1) { 
+            console.log(`${patient.nom} entre dans le cabinet.`);
+            this.patients.push(patient);
+            this.diagnostiquer(patient);
+        } else {
+            console.log("Le docteur est occupé. Veuillez attendre.");
+        }
+    }
+
+    diagnostiquer(patient) {
+        
+        patient.diagnostique = "Diagnostic effectué.";
+        console.log(`${patient.nom} a été diagnostiqué.`);
+        this.facturer(patient);
+    }
+
+    facturer(patient) {
+        if (patient.argent >= 50) {
+            patient.argent -= 50; 
+            this.argent += 50; 
+            console.log(`${patient.nom} a payé 50€. Argent du docteur: ${this.argent}€`);
+            this.sortirPatient(patient);
+        } else {
+            console.log(`${patient.nom} n'a pas assez d'argent pour payer la consultation.`);
+        }
+    }
+
+    sortirPatient(patient) {
+        console.log(`${patient.nom} sort du cabinet.`);
+        this.patients.pop(); 
+    }
+
+    miauler() {
+        setInterval(() => {
+            console.log("Miaou!"); 
+        }, 2000);
+    }
+}
+
+// Exemple d'utilisation
+const docteur = new Docteur();
+docteur.miauler();
+
+const patient1 = new Patient("Alice");
+docteur.recevoirPatient(patient1);
+
+const patient2 = new Patient("Bob");
+docteur.recevoirPatient(patient2); // Bob doit attendre
